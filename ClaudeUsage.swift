@@ -222,7 +222,7 @@ enum DisplayMode: String {
     }
     func save() { UserDefaults.standard.set(rawValue, forKey: DisplayMode.key) }
     var toggled: DisplayMode { self == .cost ? .tokens : .cost }
-    var menuLabel: String { self == .cost ? "切换为显示 Token 数" : "切换为显示等价费用 ($)" }
+    var menuLabel: String { self == .cost ? "Switch to Token Count" : "Switch to Estimated Cost ($)" }
 }
 
 // MARK: – AppDelegate
@@ -315,8 +315,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         addLabel(menu, "Claude Code — \(dateStr)")
         menu.addItem(.separator())
         let budStr   = cfg.dailyBudget > 0 ? String(format: " / $%.2f", cfg.dailyBudget) : ""
-        addLabel(menu, String(format: "等价 API 费用:  $%.4f\(budStr)", totalCost))
-        addLabel(menu, "（订阅用户仅供参考）")
+        addLabel(menu, String(format: "Est. API Cost:  $%.4f\(budStr)", totalCost))
+        addLabel(menu, "(for reference only — subscribers)")
         addLabel(menu, "────────────────────")
         addLabel(menu, "Requests: \(totalReq)")
         addLabel(menu, "Input:    \(fmtTok(totalIn))")
@@ -343,8 +343,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         addAction(menu, "Refresh", #selector(onRefresh))
         addAction(menu, mode.menuLabel, #selector(onToggleDisplay))
         menu.addItem(.separator())
-        addAction(menu, hasKey ? "更改 Admin Key…" : "设置 Admin Key (组织账户)…", #selector(onSetKey))
-        if hasKey { addAction(menu, "删除 Admin Key", #selector(onRemoveKey)) }
+        addAction(menu, hasKey ? "Change Admin Key…" : "Set Admin Key (Org Account)…", #selector(onSetKey))
+        if hasKey { addAction(menu, "Remove Admin Key", #selector(onRemoveKey)) }
         menu.addItem(.separator())
         let q = menu.addItem(withTitle: "Quit", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q")
         q.target = NSApp
@@ -356,10 +356,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     @objc func onSetKey() {
         let alert = NSAlert()
-        alert.messageText     = "设置 Admin API Key"
-        alert.informativeText = "组织账户专用。个人账户无需设置，已自动读取 Claude Code 日志。\n\n获取方式：Console → Settings → API Keys → Admin Keys"
-        alert.addButton(withTitle: "保存")
-        alert.addButton(withTitle: "取消")
+        alert.messageText     = "Set Admin API Key"
+        alert.informativeText = "For org accounts only. Personal accounts don't need this — usage is read directly from Claude Code logs.\n\nGet your key: Console → Settings → API Keys → Admin Keys"
+        alert.addButton(withTitle: "Save")
+        alert.addButton(withTitle: "Cancel")
         let field = NSSecureTextField(frame: NSRect(x: 0, y: 0, width: 380, height: 24))
         field.placeholderString = "sk-ant-admin01-..."
         if let existing = keychainLoad() { field.stringValue = existing }
