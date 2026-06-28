@@ -62,7 +62,7 @@ You should see a token/cost indicator appear in your menu bar.
 
 ### Option 2 — Build a .pkg installer
 
-To produce a double-click installer at `~/Desktop/ClaudeUsage-1.0.pkg`:
+To produce a double-click installer. The `.pkg` will be generated in the same directory as `package.sh`:
 
 ```bash
 cp claude-usage/package.sh ~/.config/claude-usage/
