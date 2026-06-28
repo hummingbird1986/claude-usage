@@ -24,7 +24,7 @@ echo "==> Creating $PKG_OUT ..."
 pkgbuild \
   --root "$PAYLOAD" \
   --install-location "/" \
-  --identifier "com.daniel.claude-usage" \
+  --identifier "com.github.claude-usage" \
   --version "$VERSION" \
   "$PKG_OUT"
 

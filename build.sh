@@ -36,7 +36,7 @@ cat > "$APPDIR/Contents/Info.plist" <<'EOF'
     <key>CFBundleDisplayName</key>
     <string>Claude Usage</string>
     <key>CFBundleIdentifier</key>
-    <string>com.daniel.claude-usage</string>
+    <string>com.github.claude-usage</string>
     <key>CFBundleVersion</key>
     <string>1.0</string>
     <key>CFBundleShortVersionString</key>
