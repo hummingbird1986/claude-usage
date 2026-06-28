@@ -10,7 +10,7 @@ import Security
 
 // MARK: – Keychain (optional, for org-account Admin API key)
 
-private let kService = "com.github.claude-usage"
+private let kService = "com.hummingbird.claude-usage"
 private let kAccount = "admin_api_key"
 
 func keychainSave(_ value: String) {
