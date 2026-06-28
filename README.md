@@ -27,6 +27,12 @@ xcode-select --install
 
 ## Installation
 
+### Option 0 — Download the pre-built installer (optional)
+
+A pre-built `ClaudeUsage-1.0.pkg` is available in this repository. Download and double-click it to install directly to `/Applications/` — no build tools required.
+
+> **Note:** The package is unsigned, so macOS may warn you. Go to **System Settings → Privacy & Security** and click **Open Anyway** if prompted.
+
 ### Option 1 — Build and install directly (recommended)
 
 1. Clone this repo and copy the files to `~/.config/claude-usage/`:
