@@ -1,13 +1,14 @@
 #!/bin/zsh
 # Build ClaudeUsage.app and wrap it into a .pkg installer.
-# Output: ~/Desktop/ClaudeUsage-1.0.pkg
+# Output: <repo>/ClaudeUsage-1.0.pkg  (or ~/Desktop if run outside the repo)
 set -e
 
 SRCDIR="$HOME/.config/claude-usage"
 APPNAME="ClaudeUsage"
 VERSION="1.0"
 PAYLOAD="$SRCDIR/.pkg_payload"
-PKG_OUT="$HOME/Desktop/${APPNAME}-${VERSION}.pkg"
+OUTDIR="$(cd "$(dirname "$0")" && pwd)"
+PKG_OUT="$OUTDIR/${APPNAME}-${VERSION}.pkg"
 
 # 1. Compile and bundle the .app
 echo "==> Building app..."
